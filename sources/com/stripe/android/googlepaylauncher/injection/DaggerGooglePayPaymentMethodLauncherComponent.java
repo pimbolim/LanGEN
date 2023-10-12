@@ -1,0 +1,206 @@
+package com.stripe.android.googlepaylauncher.injection;
+
+import android.content.Context;
+import androidx.lifecycle.SavedStateHandle;
+import com.google.android.gms.wallet.PaymentsClient;
+import com.stripe.android.GooglePayJsonFactory;
+import com.stripe.android.GooglePayJsonFactory_Factory;
+import com.stripe.android.core.Logger;
+import com.stripe.android.core.injection.LoggingModule;
+import com.stripe.android.core.injection.LoggingModule_ProvideLoggerFactory;
+import com.stripe.android.core.networking.ApiRequest;
+import com.stripe.android.googlepaylauncher.DefaultGooglePayRepository;
+import com.stripe.android.googlepaylauncher.DefaultGooglePayRepository_Factory;
+import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncher;
+import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherContract;
+import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherViewModel;
+import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherViewModel_Factory_MembersInjector;
+import com.stripe.android.googlepaylauncher.GooglePayRepository;
+import com.stripe.android.googlepaylauncher.PaymentsClientFactory;
+import com.stripe.android.googlepaylauncher.PaymentsClientFactory_Factory;
+import com.stripe.android.googlepaylauncher.injection.GooglePayPaymentMethodLauncherComponent;
+import com.stripe.android.googlepaylauncher.injection.GooglePayPaymentMethodLauncherViewModelSubcomponent;
+import com.stripe.android.networking.PaymentAnalyticsRequestFactory;
+import com.stripe.android.networking.StripeRepository;
+import dagger.internal.DoubleCheck;
+import dagger.internal.Factory;
+import dagger.internal.InstanceFactory;
+import dagger.internal.Preconditions;
+import javax.inject.Provider;
+import kotlin.coroutines.CoroutineContext;
+import kotlin.jvm.functions.Function0;
+
+public final class DaggerGooglePayPaymentMethodLauncherComponent extends GooglePayPaymentMethodLauncherComponent {
+    private Provider<Context> contextProvider;
+    /* access modifiers changed from: private */
+    public Provider<DefaultGooglePayRepository> defaultGooglePayRepositoryProvider;
+    private Provider<Boolean> enableLoggingProvider;
+    private Provider<GooglePayPaymentMethodLauncher.Config> googlePayConfigProvider;
+    /* access modifiers changed from: private */
+    public Provider<GooglePayJsonFactory> googlePayJsonFactoryProvider;
+    private final DaggerGooglePayPaymentMethodLauncherComponent googlePayPaymentMethodLauncherComponent;
+    private Provider<PaymentsClientFactory> paymentsClientFactoryProvider;
+    private Provider<Logger> provideLoggerProvider;
+    /* access modifiers changed from: private */
+    public Provider<PaymentsClient> providePaymentsClientProvider;
+    /* access modifiers changed from: private */
+    public final Function0<String> publishableKeyProvider;
+    private Provider<Function0<String>> publishableKeyProvider2;
+    /* access modifiers changed from: private */
+    public final Function0<String> stripeAccountIdProvider;
+    private Provider<Function0<String>> stripeAccountIdProvider2;
+    /* access modifiers changed from: private */
+    public final StripeRepository stripeRepository;
+
+    private DaggerGooglePayPaymentMethodLauncherComponent(LoggingModule loggingModule, Context context, CoroutineContext coroutineContext, PaymentAnalyticsRequestFactory paymentAnalyticsRequestFactory, StripeRepository stripeRepository2, GooglePayPaymentMethodLauncher.Config config, Boolean bool, Function0<String> function0, Function0<String> function02) {
+        this.googlePayPaymentMethodLauncherComponent = this;
+        this.publishableKeyProvider = function0;
+        this.stripeAccountIdProvider = function02;
+        this.stripeRepository = stripeRepository2;
+        initialize(loggingModule, context, coroutineContext, paymentAnalyticsRequestFactory, stripeRepository2, config, bool, function0, function02);
+    }
+
+    public static GooglePayPaymentMethodLauncherComponent.Builder builder() {
+        return new Builder();
+    }
+
+    private void initialize(LoggingModule loggingModule, Context context, CoroutineContext coroutineContext, PaymentAnalyticsRequestFactory paymentAnalyticsRequestFactory, StripeRepository stripeRepository2, GooglePayPaymentMethodLauncher.Config config, Boolean bool, Function0<String> function0, Function0<String> function02) {
+        this.contextProvider = InstanceFactory.create(context);
+        this.googlePayConfigProvider = InstanceFactory.create(config);
+        PaymentsClientFactory_Factory create = PaymentsClientFactory_Factory.create(this.contextProvider);
+        this.paymentsClientFactoryProvider = create;
+        this.providePaymentsClientProvider = DoubleCheck.provider(GooglePayPaymentMethodLauncherModule_Companion_ProvidePaymentsClientFactory.create(this.contextProvider, this.googlePayConfigProvider, create));
+        this.publishableKeyProvider2 = InstanceFactory.create(function0);
+        Factory<T> create2 = InstanceFactory.create(function02);
+        this.stripeAccountIdProvider2 = create2;
+        this.googlePayJsonFactoryProvider = DoubleCheck.provider(GooglePayJsonFactory_Factory.create(this.publishableKeyProvider2, create2, this.googlePayConfigProvider));
+        Factory create3 = InstanceFactory.create(bool);
+        this.enableLoggingProvider = create3;
+        Provider<Logger> provider = DoubleCheck.provider(LoggingModule_ProvideLoggerFactory.create(loggingModule, create3));
+        this.provideLoggerProvider = provider;
+        this.defaultGooglePayRepositoryProvider = DoubleCheck.provider(DefaultGooglePayRepository_Factory.create(this.contextProvider, this.googlePayConfigProvider, provider));
+    }
+
+    public void inject(GooglePayPaymentMethodLauncherViewModel.Factory factory) {
+        injectFactory(factory);
+    }
+
+    private GooglePayPaymentMethodLauncherViewModel.Factory injectFactory(GooglePayPaymentMethodLauncherViewModel.Factory factory) {
+        GooglePayPaymentMethodLauncherViewModel_Factory_MembersInjector.injectSubComponentBuilder(factory, new GooglePayPaymentMethodLauncherViewModelSubcomponentBuilder());
+        return factory;
+    }
+
+    private static final class Builder implements GooglePayPaymentMethodLauncherComponent.Builder {
+        private PaymentAnalyticsRequestFactory analyticsRequestFactory;
+        private Context context;
+        private Boolean enableLogging;
+        private GooglePayPaymentMethodLauncher.Config googlePayConfig;
+        private CoroutineContext ioContext;
+        private Function0<String> publishableKeyProvider;
+        private Function0<String> stripeAccountIdProvider;
+        private StripeRepository stripeRepository;
+
+        private Builder() {
+        }
+
+        public Builder context(Context context2) {
+            this.context = (Context) Preconditions.checkNotNull(context2);
+            return this;
+        }
+
+        public Builder ioContext(CoroutineContext coroutineContext) {
+            this.ioContext = (CoroutineContext) Preconditions.checkNotNull(coroutineContext);
+            return this;
+        }
+
+        public Builder analyticsRequestFactory(PaymentAnalyticsRequestFactory paymentAnalyticsRequestFactory) {
+            this.analyticsRequestFactory = (PaymentAnalyticsRequestFactory) Preconditions.checkNotNull(paymentAnalyticsRequestFactory);
+            return this;
+        }
+
+        public Builder stripeRepository(StripeRepository stripeRepository2) {
+            this.stripeRepository = (StripeRepository) Preconditions.checkNotNull(stripeRepository2);
+            return this;
+        }
+
+        public Builder googlePayConfig(GooglePayPaymentMethodLauncher.Config config) {
+            this.googlePayConfig = (GooglePayPaymentMethodLauncher.Config) Preconditions.checkNotNull(config);
+            return this;
+        }
+
+        public Builder enableLogging(boolean z) {
+            this.enableLogging = (Boolean) Preconditions.checkNotNull(Boolean.valueOf(z));
+            return this;
+        }
+
+        public Builder publishableKeyProvider(Function0<String> function0) {
+            this.publishableKeyProvider = (Function0) Preconditions.checkNotNull(function0);
+            return this;
+        }
+
+        public Builder stripeAccountIdProvider(Function0<String> function0) {
+            this.stripeAccountIdProvider = (Function0) Preconditions.checkNotNull(function0);
+            return this;
+        }
+
+        public GooglePayPaymentMethodLauncherComponent build() {
+            Preconditions.checkBuilderRequirement(this.context, Context.class);
+            Preconditions.checkBuilderRequirement(this.ioContext, CoroutineContext.class);
+            Preconditions.checkBuilderRequirement(this.analyticsRequestFactory, PaymentAnalyticsRequestFactory.class);
+            Preconditions.checkBuilderRequirement(this.stripeRepository, StripeRepository.class);
+            Preconditions.checkBuilderRequirement(this.googlePayConfig, GooglePayPaymentMethodLauncher.Config.class);
+            Preconditions.checkBuilderRequirement(this.enableLogging, Boolean.class);
+            Preconditions.checkBuilderRequirement(this.publishableKeyProvider, Function0.class);
+            Preconditions.checkBuilderRequirement(this.stripeAccountIdProvider, Function0.class);
+            return new DaggerGooglePayPaymentMethodLauncherComponent(new LoggingModule(), this.context, this.ioContext, this.analyticsRequestFactory, this.stripeRepository, this.googlePayConfig, this.enableLogging, this.publishableKeyProvider, this.stripeAccountIdProvider);
+        }
+    }
+
+    private static final class GooglePayPaymentMethodLauncherViewModelSubcomponentBuilder implements GooglePayPaymentMethodLauncherViewModelSubcomponent.Builder {
+        private GooglePayPaymentMethodLauncherContract.Args args;
+        private final DaggerGooglePayPaymentMethodLauncherComponent googlePayPaymentMethodLauncherComponent;
+        private SavedStateHandle savedStateHandle;
+
+        private GooglePayPaymentMethodLauncherViewModelSubcomponentBuilder(DaggerGooglePayPaymentMethodLauncherComponent daggerGooglePayPaymentMethodLauncherComponent) {
+            this.googlePayPaymentMethodLauncherComponent = daggerGooglePayPaymentMethodLauncherComponent;
+        }
+
+        public GooglePayPaymentMethodLauncherViewModelSubcomponentBuilder args(GooglePayPaymentMethodLauncherContract.Args args2) {
+            this.args = (GooglePayPaymentMethodLauncherContract.Args) Preconditions.checkNotNull(args2);
+            return this;
+        }
+
+        public GooglePayPaymentMethodLauncherViewModelSubcomponentBuilder savedStateHandle(SavedStateHandle savedStateHandle2) {
+            this.savedStateHandle = (SavedStateHandle) Preconditions.checkNotNull(savedStateHandle2);
+            return this;
+        }
+
+        public GooglePayPaymentMethodLauncherViewModelSubcomponent build() {
+            Preconditions.checkBuilderRequirement(this.args, GooglePayPaymentMethodLauncherContract.Args.class);
+            Preconditions.checkBuilderRequirement(this.savedStateHandle, SavedStateHandle.class);
+            return new GooglePayPaymentMethodLauncherViewModelSubcomponentImpl(this.args, this.savedStateHandle);
+        }
+    }
+
+    private static final class GooglePayPaymentMethodLauncherViewModelSubcomponentImpl implements GooglePayPaymentMethodLauncherViewModelSubcomponent {
+        private final GooglePayPaymentMethodLauncherContract.Args args;
+        private final DaggerGooglePayPaymentMethodLauncherComponent googlePayPaymentMethodLauncherComponent;
+        private final GooglePayPaymentMethodLauncherViewModelSubcomponentImpl googlePayPaymentMethodLauncherViewModelSubcomponentImpl;
+        private final SavedStateHandle savedStateHandle;
+
+        private GooglePayPaymentMethodLauncherViewModelSubcomponentImpl(DaggerGooglePayPaymentMethodLauncherComponent daggerGooglePayPaymentMethodLauncherComponent, GooglePayPaymentMethodLauncherContract.Args args2, SavedStateHandle savedStateHandle2) {
+            this.googlePayPaymentMethodLauncherViewModelSubcomponentImpl = this;
+            this.googlePayPaymentMethodLauncherComponent = daggerGooglePayPaymentMethodLauncherComponent;
+            this.args = args2;
+            this.savedStateHandle = savedStateHandle2;
+        }
+
+        private ApiRequest.Options options() {
+            return new ApiRequest.Options(this.googlePayPaymentMethodLauncherComponent.publishableKeyProvider, this.googlePayPaymentMethodLauncherComponent.stripeAccountIdProvider);
+        }
+
+        public GooglePayPaymentMethodLauncherViewModel getViewModel() {
+            return new GooglePayPaymentMethodLauncherViewModel((PaymentsClient) this.googlePayPaymentMethodLauncherComponent.providePaymentsClientProvider.get(), options(), this.args, this.googlePayPaymentMethodLauncherComponent.stripeRepository, (GooglePayJsonFactory) this.googlePayPaymentMethodLauncherComponent.googlePayJsonFactoryProvider.get(), (GooglePayRepository) this.googlePayPaymentMethodLauncherComponent.defaultGooglePayRepositoryProvider.get(), this.savedStateHandle);
+        }
+    }
+}

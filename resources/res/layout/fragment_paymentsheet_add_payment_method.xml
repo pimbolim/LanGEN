@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:paddingTop="@dimen/stripe_paymentsheet_outer_spacing_top" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.compose.ui.platform.ComposeView android:id="@+id/payment_methods_recycler" android:paddingTop="18dp" android:paddingBottom="6dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <androidx.fragment.app.FragmentContainerView android:id="@+id/payment_method_fragment_container" android:paddingLeft="@dimen/stripe_paymentsheet_outer_spacing_horizontal" android:paddingRight="@dimen/stripe_paymentsheet_outer_spacing_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>

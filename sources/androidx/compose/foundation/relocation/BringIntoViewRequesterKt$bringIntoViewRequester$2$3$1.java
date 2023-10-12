@@ -1,0 +1,44 @@
+package androidx.compose.foundation.relocation;
+
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.modifier.ModifierLocalConsumer;
+import androidx.compose.ui.modifier.ModifierLocalReadScope;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(k = 3, mv = {1, 6, 0}, xi = 48)
+/* compiled from: BringIntoViewRequester.kt */
+public final class BringIntoViewRequesterKt$bringIntoViewRequester$2$3$1 implements ModifierLocalConsumer {
+    final /* synthetic */ BringIntoViewData $bringIntoViewData;
+
+    BringIntoViewRequesterKt$bringIntoViewRequester$2$3$1(BringIntoViewData bringIntoViewData) {
+        this.$bringIntoViewData = bringIntoViewData;
+    }
+
+    public boolean all(Function1<? super Modifier.Element, Boolean> function1) {
+        return ModifierLocalConsumer.DefaultImpls.all(this, function1);
+    }
+
+    public boolean any(Function1<? super Modifier.Element, Boolean> function1) {
+        return ModifierLocalConsumer.DefaultImpls.any(this, function1);
+    }
+
+    public <R> R foldIn(R r, Function2<? super R, ? super Modifier.Element, ? extends R> function2) {
+        return ModifierLocalConsumer.DefaultImpls.foldIn(this, r, function2);
+    }
+
+    public <R> R foldOut(R r, Function2<? super Modifier.Element, ? super R, ? extends R> function2) {
+        return ModifierLocalConsumer.DefaultImpls.foldOut(this, r, function2);
+    }
+
+    public Modifier then(Modifier modifier) {
+        return ModifierLocalConsumer.DefaultImpls.then(this, modifier);
+    }
+
+    public void onModifierLocalsUpdated(ModifierLocalReadScope modifierLocalReadScope) {
+        Intrinsics.checkNotNullParameter(modifierLocalReadScope, "scope");
+        this.$bringIntoViewData.setParent((BringIntoViewResponder) modifierLocalReadScope.getCurrent(BringIntoViewResponder.Companion.getModifierLocalBringIntoViewResponder()));
+    }
+}

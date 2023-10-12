@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseStripe3DS2Theme">
+        <item name="android:colorBackground">@color/stripe_3ds2_background</item>
+        <item name="android:textColorPrimary">@color/stripe_3ds2_text_color_primary</item>
+        <item name="android:textColor">@color/stripe_3ds2_text_color</item>
+        <item name="android:editTextColor">@color/stripe_3ds2_text_edit</item>
+        <item name="actionBarStyle">@style/Stripe3DS2ActionBar</item>
+        <item name="actionBarTheme">@style/Stripe3DS2Theme</item>
+        <item name="colorAccent">@color/stripe_3ds2_accent</item>
+        <item name="colorControlActivated">@color/stripe_3ds2_control_activated</item>
+        <item name="colorPrimary">@color/stripe_3ds2_primary</item>
+        <item name="colorPrimaryDark">@color/stripe_3ds2_primary_dark</item>
+        <item name="textInputStyle">@style/Stripe3DS2TextInputLayout</item>
+    </style>
+    <style name="Theme.AppCompat.DayNight">
+    </style>
+    <style name="Theme.AppCompat.DayNight.DarkActionBar">
+    </style>
+    <style name="Theme.AppCompat.DayNight.Dialog">
+    </style>
+    <style name="Theme.AppCompat.DayNight.Dialog.Alert">
+    </style>
+    <style name="Theme.AppCompat.DayNight.Dialog.MinWidth">
+    </style>
+    <style name="Theme.AppCompat.DayNight.DialogWhenLarge">
+    </style>
+    <style name="Theme.AppCompat.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.Material3.DayNight">
+    </style>
+    <style name="Theme.Material3.DayNight.BottomSheetDialog">
+    </style>
+    <style name="Theme.Material3.DayNight.Dialog">
+    </style>
+    <style name="Theme.Material3.DayNight.Dialog.Alert">
+    </style>
+    <style name="Theme.Material3.DayNight.Dialog.MinWidth">
+    </style>
+    <style name="Theme.Material3.DayNight.DialogWhenLarge">
+    </style>
+    <style name="Theme.Material3.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.Material3.DynamicColors.DayNight">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.DarkActionBar">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Alert">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Alert.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.FixedSize">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.FixedSize.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.MinWidth">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.MinWidth.Bridge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.DialogWhenLarge">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    </style>
+    <style name="ThemeOverlay.AppCompat.DayNight">
+    </style>
+    <style name="ThemeOverlay.Material3.DynamicColors.DayNight">
+    </style>
+    <style name="Widget.MaterialComponents.ActionBar.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.AppBarLayout.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.NavigationRailView.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.TabLayout.PrimarySurface">
+    </style>
+    <style name="Widget.MaterialComponents.Toolbar.PrimarySurface">
+    </style>
+</resources>
